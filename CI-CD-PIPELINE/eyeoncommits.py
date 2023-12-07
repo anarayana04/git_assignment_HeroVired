@@ -10,6 +10,9 @@ def get_new_commits(username, repository, token, since):
 
     if response.status_code == 200:
         commits = response.json()
+        file_path = "D:\Python\GIT\git_assignment_HeroVired\CI-CD-PIPELINE"
+        with open(file_path, "w"):
+          pass
         return commits
     else:
         print(f"Failed to fetch commits. Status code: {response.status_code}")
@@ -17,11 +20,11 @@ def get_new_commits(username, repository, token, since):
 
 def main():
     username = 'anarayana04'
-    repository = 'https://github.com/anarayana04/git_assignment_HeroVired/tree/main/CI-CD-PIPELINE'
-    token = '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'
+    repository = 'git_assignment_HeroVired'
+    token = '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'
     
     # Set the datetime for the last check (e.g., one day ago)
-    since_datetime = (datetime.now() - timedelta(hours=4)).isoformat()
+    since_datetime = (datetime.now() - timedelta(days=3)).isoformat()
 
     commits = get_new_commits(username, repository, token, since_datetime)
 
